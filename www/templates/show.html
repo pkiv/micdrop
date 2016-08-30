@@ -1,0 +1,31 @@
+<ion-view view-title="Show">
+<ion-content class="has-footer has-subfooter">
+  <div class="list card">
+
+  <div class="item item-avatar">
+    <img ng-src="{{'http://micdrop.audio' + show.picture }}">
+    <h2>{{show.name}} at {{show.venue}}</h2>
+    <p>{{ show.date | date:'medium'}}</p>
+  </div>
+
+  <div class="item item-body">
+    <img class="full-image" src="{{'http://micdrop.audio' + show.picture }}">
+    <p>
+      {{ show.about }}
+    </p>
+    <p>
+      Artist: <span ng-repeat="artist in show.artists">{{ artist }}{{$last ? '' : ', '}}</span>
+      <br>
+      Where: <a class="subdued" ng-href="#/app/map">{{ show.venue + " - " + show.address}}</a>
+      <br>
+      Tickets: {{ show.tickets == true ? 'Tickets Required' : 'No Tickets Required!' }}
+      <br>
+      Genre: <span ng-repeat="genre in show.genre">{{ genre }}{{$last ? '' : ', '}}</span>
+      <br ng-if="show.url.length > 0">  
+      <a class="subdued" ng-if="show.url.length > 1500" ng-onclick="window.open('{{show.url}}', '_system', 'location=yes'); return false;">Click here for more information</a> <!--Need to fix external link TODO -->
+    </p>
+  </div>
+
+  </div>
+</ion-content>
+</ion-view>

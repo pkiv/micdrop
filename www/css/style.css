@@ -1,0 +1,46 @@
+/* Sets up our marquee, and inner content */
+.marquee {
+    overflow: hidden;
+    position: relative;
+    padding-left: 100%;
+    /* Some browsers may require -webkit-animation */
+    animation: reduce 20s linear infinite;
+}
+
+        .marquee__inner {
+            white-space: nowrap;
+            display: inline-block;
+            /* Some browsers may require -webkit-animation */
+            animation: scroll 20s linear infinite;
+        }
+
+/* Creates two white-to-transparent gradients at the ends of the marquee */
+.marquee::before, .marquee::after {
+    z-index: 1;
+    top: 0; left: 0;
+    position: absolute;
+    content: ""; display: block;
+}
+
+.marquee::after {
+    left: auto; right: 0;
+    transform: rotate(180deg);
+}
+
+.center {
+    margin: auto;
+    width: 36%;
+}
+
+/* Some browsers may require @-webkit-keyframes */
+@keyframes reduce {
+    to {
+        padding-left: 0;
+    }
+}
+
+@keyframes scroll {
+    to {
+        transform: translateX( -100% );
+    }
+}

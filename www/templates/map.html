@@ -1,0 +1,37 @@
+<ion-view view-title="Map">
+<style type="text/css">
+	.scroll {
+	    height: 100%;
+	}
+	#zmap {
+        height: 95%;
+      }
+  </style> 
+  <ion-content>
+    <ng-map id="zmap" center="{{currentlocation}}" zoom="13" disable-default-u-i="true" zoom-to-include-markers="auto">
+
+    	 <marker id="current" position="{{currentlocation}}" icon="https://www.google.com/support/enterprise/static/geo/cdate/art/dots/blue_dot.png"> </marker>
+
+        <marker id='{{show._id}}' position="{{ [show.location.coordinates[1], show.location.coordinates[0]] }}"
+          ng-repeat="show in shows"
+          on-click="showDetail(show)">
+        </marker>
+
+        <info-window id="info">
+          <div ng-non-bindable="">
+            <p>{{show.name}} at {{show.venue}} on {{ show.date | date:'medium' }} <br> <a href="#/app/shows/{{show._id}}"> More info </a>
+          </div>
+        </info-window>
+
+        <shape id="circle" name="circle" centered="true" stroke-color='#000000' stroke-opacity="0.3"
+          stroke-weight="2" fill-color="#1E90FF" fill-opacity=".1" center="current-position" 
+          radius="{{ distance }}" editable="false">
+        </shape>
+
+      	<custom-control position="BOTTOM_RIGHT" index="1" on-click="controlClick()">
+    	   <button class="button button-stable"><i class ="icon ion-pinpoint"></i></button>
+    	  </custom-control>
+
+	</ng-map>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,31 @@
+<ion-view view-title="Shows">
+<style type="text/css">
+    .center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+  </style> 
+    <ion-content class="has-footer">
+        <ion-list>
+            <ion-item ng-repeat="show in shows" class="list card item-text-wrap">
+                <div class="item item-avatar">
+                    <img ng-src="{{'http://micdrop.audio' + show.picture }}"> <!-- Change this port to 8100 when doing local development, 3000 for mobile -->
+                    <h2>{{show.name}} at {{show.venue}}</h2>
+                    <p> See <span ng-repeat="artist in show.artists">{{ artist }}{{$last ? '' : ', '}}</span> on {{ show.date | date:'short'}}. </p>
+                </div>
+                <div class="item tabs tabs-secondary tabs-icon-left">
+                    <a ng-attr-class="{{ musicFactory.currentTrack == $index && musicFactory.playing ? 'tab-item assertive' : 'tab-item' }}" ng-click="musicFactory.playTrack($index)">
+                        <i class="icon ion-music-note"></i> Listen
+                    </a>
+                    <a class="tab-item" ng-click="" href="#/app/map/{{show._id}}">
+                        <i class="icon ion-map"></i> Location
+                    </a>
+                    <a class="tab-item" ng-click="" href="#/app/shows/{{show._id}}">
+                        <i class="icon ion-mic-b"></i> Info
+                    </a>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

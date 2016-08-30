@@ -1,0 +1,10 @@
+{
+  "name": "micdrop",
+  "app_id": "",
+  "proxies": [
+    {
+      "path": "/shows",
+      "proxyUrl": "http://micdrop.audio/shows"
+    }
+    ]
+}

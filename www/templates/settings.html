@@ -1,0 +1,20 @@
+<ion-view view-title="Settings">
+  <ion-content>
+    <ul class="list">
+  	<label class="item item-input">
+      <span class="input-label">Distance (Kilometers):</span> {{ distance }}
+      <!--TODO Make this a slider selection. Onchange call the showfactory reload function with the new distance. -->
+    </label>
+      <div class="item range range-positive">
+	    <input type="range" ng-model="distance" min="0" max="100" ng-value="distance">
+	  </div>
+	</ul>
+	<div class="row">
+		<div class="col text-center">
+			<button class="button button-balanced" ng-click="setDistance(distance)">
+			  Save
+			</button>
+		</div>
+	</div>
+  </ion-content>
+</ion-view>
